@@ -1,0 +1,15 @@
+# seed_data.py
+
+from sqlalchemy import create_engine
+from sqlalchemy.orm import sessionmaker
+
+from models import Base, Restaurant, Customer, Review
+
+engine = create_engine('sqlite:///restaurant_data.db')
+Base.metadata.create_all(engine)
+
+Session = sessionmaker(bind=engine)
+session = Session()
+
+
+session.commit()
